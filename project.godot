@@ -13,12 +13,15 @@ config_version=4
 config/name="Rotarat"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameStatus="*res://Game_status.gd"
+
 [display]
 
 window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
-window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
