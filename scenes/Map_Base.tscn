@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="Map_Base" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 1
