@@ -60,38 +60,56 @@ func _process(delta):
 func _input(event):
 	if event.is_pressed() && event is InputEventMouseButton && !$Tween.is_active() && GameStatus.left_screen==left_side:
 		if event.button_index == (1):
-			player.get_node("anmt").frame=0
-			$Tween.interpolate_property(camera,"rotation_degrees",camera.rotation_degrees,camera.rotation_degrees+90,0.5)
-			$Tween.interpolate_property(player,"rotation_degrees",player.rotation_degrees,player.rotation_degrees+90,0.5)
-			$Player/CollisionShape2D.disabled = true
-			$Tween.start()
+			rotate_right()
 		elif event.button_index == (2):	
-			player.get_node("anmt").frame=0
-			$Tween.interpolate_property(camera,"rotation_degrees",camera.rotation_degrees,camera.rotation_degrees-90,0.5)
-			$Tween.interpolate_property(player,"rotation_degrees",player.rotation_degrees,player.rotation_degrees-90,0.5)
-			$Player/CollisionShape2D.disabled = true
-			$Tween.start()
-		
+			rotate_left()
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_UP && !$Tween.is_active() && !ray.up.is_colliding():
-		player.get_node("anmt").frame=0
-		player.get_node("anmt").play(dirc[player_id-1][2])
-		$Tween.interpolate_property(player,"position",player.position,player.position+Vector2(0, fix*95).rotated(player.rotation),0.5)
-		$Tween.start()
+		go_up()
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_LEFT && !$Tween.is_active() && !ray.left.is_colliding():
-		player.get_node("anmt").frame=0
-		player.get_node("anmt").play(dirc[player_id-1][0])
-		$Tween.interpolate_property(player,"position",player.position,player.position+Vector2(fix*95, 0).rotated(player.rotation),0.5)
-		$Tween.start()
+		go_left()
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_RIGHT && !$Tween.is_active() && !ray.right.is_colliding():	
-		player.get_node("anmt").frame=0
-		player.get_node("anmt").play(dirc[player_id-1][1])
-		$Tween.interpolate_property(player,"position",player.position,player.position+Vector2(-fix*95, 0).rotated(player.rotation),0.5)
-		$Tween.start()
+		go_right()
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_DOWN && !$Tween.is_active() && !ray.down.is_colliding():
-		player.get_node("anmt").frame=0
-		player.get_node("anmt").play(dirc[player_id-1][3])
-		$Tween.interpolate_property(player,"position",player.position,player.position+Vector2(0, -fix*95).rotated(player.rotation),0.5)
-		$Tween.start()
+		go_down()
+
+
+func go_left():
+	player.get_node("anmt").frame=0
+	player.get_node("anmt").play(dirc[player_id-1][0])
+	$Tween.interpolate_property(player,"position",player.position,player.position+Vector2(fix*95, 0).rotated(player.rotation),0.5)
+	$Tween.start()
+	
+func go_right():
+	player.get_node("anmt").frame=0
+	player.get_node("anmt").play(dirc[player_id-1][1])
+	$Tween.interpolate_property(player,"position",player.position,player.position+Vector2(-fix*95, 0).rotated(player.rotation),0.5)
+	$Tween.start()	
+	
+func go_up():
+	player.get_node("anmt").frame=0
+	player.get_node("anmt").play(dirc[player_id-1][2])
+	$Tween.interpolate_property(player,"position",player.position,player.position+Vector2(0, fix*95).rotated(player.rotation),0.5)
+	$Tween.start()
+	
+func go_down():
+	player.get_node("anmt").frame=0
+	player.get_node("anmt").play(dirc[player_id-1][3])
+	$Tween.interpolate_property(player,"position",player.position,player.position+Vector2(0, -fix*95).rotated(player.rotation),0.5)
+	$Tween.start()
+	
+func rotate_left():
+	player.get_node("anmt").frame=0
+	$Tween.interpolate_property(camera,"rotation_degrees",camera.rotation_degrees,camera.rotation_degrees-90,0.5)
+	$Tween.interpolate_property(player,"rotation_degrees",player.rotation_degrees,player.rotation_degrees-90,0.5)
+	$Player/CollisionShape2D.disabled = true
+	$Tween.start()
+	
+func rotate_right():
+	player.get_node("anmt").frame=0
+	$Tween.interpolate_property(camera,"rotation_degrees",camera.rotation_degrees,camera.rotation_degrees+90,0.5)
+	$Tween.interpolate_property(player,"rotation_degrees",player.rotation_degrees,player.rotation_degrees+90,0.5)
+	$Player/CollisionShape2D.disabled = true
+	$Tween.start()	
 
 func _on_Tween_tween_all_completed():
 	$Player/CollisionShape2D.disabled = false
