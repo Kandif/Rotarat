@@ -11,6 +11,7 @@ config_version=4
 [application]
 
 config/name="Rotarat"
+run/main_scene="res://scenes/Map_Base.tscn"
 config/icon="res://icon.png"
 
 [autoload]
