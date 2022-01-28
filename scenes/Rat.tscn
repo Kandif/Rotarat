@@ -111,7 +111,7 @@ script = ExtResource( 3 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Player"]
 modulate = Color( 0.0784314, 1, 0, 1 )
-position = Vector2( 1.68179, -22.4543 )
+position = Vector2( 5.83328, -42.8855 )
 scale = Vector2( 0.1, 0.1 )
 frames = SubResource( 17 )
 animation = "left"
