@@ -10,6 +10,11 @@ onready var player = $Player
 var ray = {}
 
 func _ready():
+	print($"../TileMap".get_cell(13, 8))
+	print($"../TileMap".get_cell(15, 8))
+
+
+
 	$Player/ref_l.visible = false
 	$Player/ref_r.visible = false
 	if left_side:
@@ -23,7 +28,7 @@ func _ready():
 			"up" : get_node("Player/action-colision/up"),
 			"down" : get_node("Player/action-colision/down")
 		}
-	else:	
+	else:
 		player_id = 2
 		fix = 1
 		$Player/Sprite.position.x += 285
@@ -35,18 +40,21 @@ func _ready():
 			"down" : get_node("Player/action-colision/up"),
 			"up" : get_node("Player/action-colision/down")
 		}
-		
+
 func _process(delta):
 	$cam.position = $Player.position
 
 func _input(event):
-	print(ray.left.is_colliding())
+
+
+
+#	print(ray.left.is_colliding())
 	if event.is_pressed() && event is InputEventMouseButton && event.button_index == (player_id) && !$Tween.is_active():
 		$Tween.interpolate_property(camera,"rotation_degrees",camera.rotation_degrees,camera.rotation_degrees+90,0.5)
 		$Tween.interpolate_property(player,"rotation_degrees",player.rotation_degrees,player.rotation_degrees+90,0.5)
 		$Player/CollisionShape2D.disabled = true
 		$Tween.start()
-		
+
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_UP && !$Tween.is_active() && !ray.up.is_colliding():
 		$Tween.interpolate_property(player,"position",player.position,player.position+Vector2(0, fix*95).rotated(player.rotation),0.5)
 		$Tween.start()
@@ -55,7 +63,7 @@ func _input(event):
 		$Tween.start()
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_RIGHT && !$Tween.is_active() && !ray.right.is_colliding():
 		$Tween.interpolate_property(player,"position",player.position,player.position+Vector2(-fix*95, 0).rotated(player.rotation),0.5)
-		$Tween.start()	
+		$Tween.start()
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_DOWN && !$Tween.is_active() && !ray.down.is_colliding():
 		$Tween.interpolate_property(player,"position",player.position,player.position+Vector2(0, -fix*95).rotated(player.rotation),0.5)
 		$Tween.start()
