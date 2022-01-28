@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/graphics/UI/arrow.png" type="Texture" id=1]
 [ext_resource path="res://assets/graphics/UI/settings_bg.png" type="Texture" id=2]
@@ -7,74 +7,133 @@
 [ext_resource path="res://assets/graphics/UI/check_1.png" type="Texture" id=5]
 [ext_resource path="res://assets/graphics/UI/check_0.png" type="Texture" id=6]
 [ext_resource path="res://assets/graphics/UI/slidergrabber.png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/UI/button1.png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/UI/button4.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/UI/button2.png" type="Texture" id=10]
+[ext_resource path="res://assets/graphics/UI/button3.png" type="Texture" id=11]
+[ext_resource path="res://scripts/Menu.gd" type="Script" id=12]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Main" type="VBoxContainer" parent="."]
-visible = false
-margin_left = 130.0
-margin_top = 153.0
-margin_right = 336.0
-margin_bottom = 305.0
+margin_left = 87.0
+margin_top = 609.0
+margin_right = 371.0
+margin_bottom = 1001.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="TextureButton" parent="Main"]
+margin_right = 284.0
+margin_bottom = 83.0
+texture_normal = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="Main/Play"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+text = "Play"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Play" type="Button" parent="Main"]
-margin_right = 206.0
-margin_bottom = 20.0
-text = "Play"
+[node name="Settings" type="TextureButton" parent="Main"]
+margin_top = 103.0
+margin_right = 284.0
+margin_bottom = 186.0
+texture_normal = ExtResource( 10 )
 
-[node name="Settings" type="Button" parent="Main"]
-margin_top = 24.0
-margin_right = 206.0
-margin_bottom = 44.0
+[node name="Label" type="Label" parent="Main/Settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
 text = "Settings"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Credits" type="Button" parent="Main"]
-margin_top = 48.0
-margin_right = 206.0
-margin_bottom = 68.0
+[node name="Credits" type="TextureButton" parent="Main"]
+margin_top = 206.0
+margin_right = 284.0
+margin_bottom = 289.0
+texture_normal = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="Main/Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
 text = "Credits"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Quit" type="Button" parent="Main"]
-margin_top = 72.0
-margin_right = 206.0
-margin_bottom = 92.0
+[node name="Quit" type="TextureButton" parent="Main"]
+margin_top = 309.0
+margin_right = 284.0
+margin_bottom = 392.0
+texture_normal = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="Main/Quit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
 text = "Quit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="SettingsView" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SettingsView"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -727.5
-margin_top = -474.5
-margin_right = 727.5
-margin_bottom = 474.5
+margin_left = 212.5
+margin_top = 45.5
+margin_right = 1667.5
+margin_bottom = 994.5
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Settings" type="Label" parent="."]
+[node name="Settings" type="Label" parent="SettingsView"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -76.5
-margin_top = -438.0
-margin_right = 76.5
-margin_bottom = -356.0
+margin_left = 863.5
+margin_top = 82.0
+margin_right = 1016.5
+margin_bottom = 164.0
 custom_colors/font_color = Color( 0.67451, 0.478431, 0.662745, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Settings"
@@ -85,55 +144,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Back to menu" type="TextureButton" parent="."]
-margin_left = 643.0
-margin_top = 676.0
-margin_right = 1017.0
-margin_bottom = 895.0
+[node name="Back to menu" type="TextureButton" parent="SettingsView"]
+margin_left = 794.0
+margin_top = 748.0
+margin_right = 1168.0
+margin_bottom = 967.0
 rect_scale = Vector2( 0.8, 0.8 )
 texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SettingsMenu" type="VBoxContainer" parent="."]
-margin_left = 732.0
-margin_top = 433.0
-margin_right = 914.0
-margin_bottom = 797.0
-custom_constants/separation = 40
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Fullscreen" type="Label" parent="SettingsMenu"]
-margin_right = 182.0
-margin_bottom = 61.0
-custom_colors/font_color = Color( 0.552941, 0.423529, 0.545098, 1 )
-custom_fonts/font = ExtResource( 3 )
-text = "Fullscreen"
-
-[node name="Sfx" type="Label" parent="SettingsMenu"]
-margin_top = 101.0
-margin_right = 182.0
-margin_bottom = 162.0
-custom_colors/font_color = Color( 0.552941, 0.423529, 0.545098, 1 )
-custom_fonts/font = ExtResource( 3 )
-text = "SFX"
-
-[node name="Music" type="Label" parent="SettingsMenu"]
-margin_top = 202.0
-margin_right = 182.0
-margin_bottom = 263.0
-custom_colors/font_color = Color( 0.552941, 0.423529, 0.545098, 1 )
-custom_fonts/font = ExtResource( 3 )
-text = "Music"
-
-[node name="Back" type="Label" parent="SettingsMenu"]
-margin_top = 303.0
-margin_right = 182.0
-margin_bottom = 364.0
+[node name="Back" type="Label" parent="SettingsView"]
+margin_left = 883.0
+margin_top = 808.0
+margin_right = 1065.0
+margin_bottom = 869.0
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Back to Menu"
@@ -141,11 +167,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CheckBox" type="CheckBox" parent="."]
-margin_left = 911.0
-margin_top = 421.0
-margin_right = 995.0
-margin_bottom = 504.0
+[node name="SettingsMenu" type="VBoxContainer" parent="SettingsView"]
+margin_left = 716.0
+margin_top = 441.0
+margin_right = 898.0
+margin_bottom = 805.0
+custom_constants/separation = 40
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Fullscreen" type="Label" parent="SettingsView/SettingsMenu"]
+margin_right = 182.0
+margin_bottom = 61.0
+custom_colors/font_color = Color( 0.552941, 0.423529, 0.545098, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Fullscreen"
+
+[node name="Sfx" type="Label" parent="SettingsView/SettingsMenu"]
+margin_top = 101.0
+margin_right = 182.0
+margin_bottom = 162.0
+custom_colors/font_color = Color( 0.552941, 0.423529, 0.545098, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "SFX"
+
+[node name="Music" type="Label" parent="SettingsView/SettingsMenu"]
+margin_top = 202.0
+margin_right = 182.0
+margin_bottom = 263.0
+custom_colors/font_color = Color( 0.552941, 0.423529, 0.545098, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Music"
+
+[node name="CheckBox" type="CheckBox" parent="SettingsView"]
+margin_left = 895.0
+margin_top = 429.0
+margin_right = 979.0
+margin_bottom = 512.0
 custom_icons/checked = ExtResource( 5 )
 custom_icons/unchecked = ExtResource( 6 )
 custom_styles/focus = SubResource( 1 )
@@ -153,11 +213,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sfxslider" type="HSlider" parent="."]
-margin_left = 829.0
-margin_top = 547.0
-margin_right = 1229.0
-margin_bottom = 579.0
+[node name="sfxslider" type="HSlider" parent="SettingsView"]
+margin_left = 813.0
+margin_top = 555.0
+margin_right = 1213.0
+margin_bottom = 587.0
 rect_min_size = Vector2( 400, 0 )
 custom_icons/grabber_disabled = ExtResource( 7 )
 custom_icons/grabber_highlight = ExtResource( 7 )
@@ -166,11 +226,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="musicslider" type="HSlider" parent="."]
-margin_left = 829.0
-margin_top = 651.0
-margin_right = 1229.0
-margin_bottom = 683.0
+[node name="musicslider" type="HSlider" parent="SettingsView"]
+margin_left = 813.0
+margin_top = 659.0
+margin_right = 1213.0
+margin_bottom = 691.0
 rect_min_size = Vector2( 400, 0 )
 custom_icons/grabber_disabled = ExtResource( 7 )
 custom_icons/grabber_highlight = ExtResource( 7 )
@@ -179,44 +239,119 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Credits" type="VBoxContainer" parent="."]
+[node name="CreditsView" type="Control" parent="."]
 visible = false
-margin_left = 130.0
-margin_top = 153.0
-margin_right = 336.0
-margin_bottom = 203.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="TextureRect" parent="CreditsView"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -727.5
+margin_top = -474.5
+margin_right = 727.5
+margin_bottom = 474.5
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CreditsView"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -103.0
+margin_top = -435.0
+margin_right = 103.0
+margin_bottom = -353.0
+custom_colors/font_color = Color( 0.67451, 0.478431, 0.662745, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Credits"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back to menu" type="TextureButton" parent="CreditsView"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -166.0
+margin_top = 185.5
+margin_right = 208.0
+margin_bottom = 404.5
+rect_scale = Vector2( 0.8, 0.8 )
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Label" parent="CreditsView"]
+margin_left = 883.0
+margin_top = 786.0
+margin_right = 1065.0
+margin_bottom = 847.0
+input_pass_on_modal_close_click = false
+custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Back to Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="VBoxContainer" parent="CreditsView"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -221.5
+margin_top = -87.5
+margin_right = 221.5
+margin_bottom = 103.5
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Credits"]
-margin_right = 206.0
-margin_bottom = 14.0
-text = "Credits"
-align = 1
-valign = 1
-
-[node name="programming" type="Label" parent="Credits"]
-margin_top = 18.0
-margin_right = 206.0
-margin_bottom = 32.0
+[node name="programming" type="Label" parent="CreditsView/Credits"]
+margin_right = 443.0
+margin_bottom = 61.0
+custom_colors/font_color = Color( 0.552941, 0.423529, 0.545098, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Programming: Kandif, Naionel"
 align = 1
 valign = 1
 
-[node name="art" type="Label" parent="Credits"]
-margin_top = 36.0
-margin_right = 206.0
-margin_bottom = 50.0
+[node name="art" type="Label" parent="CreditsView/Credits"]
+margin_top = 65.0
+margin_right = 443.0
+margin_bottom = 126.0
+custom_colors/font_color = Color( 0.552941, 0.423529, 0.545098, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Art: Monette, Macierz"
 align = 1
 valign = 1
 
-[node name="music" type="Label" parent="Credits"]
-margin_top = 54.0
-margin_right = 206.0
-margin_bottom = 68.0
+[node name="music" type="Label" parent="CreditsView/Credits"]
+margin_top = 130.0
+margin_right = 443.0
+margin_bottom = 191.0
+custom_colors/font_color = Color( 0.552941, 0.423529, 0.545098, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Music/SFX: Emma Almond"
 align = 1
 valign = 1
+
+[connection signal="pressed" from="Main/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Main/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Main/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="SettingsView/Back to menu" to="." method="_on_SettingsBack_to_menu_pressed"]
+[connection signal="pressed" from="CreditsView/Back to menu" to="." method="_on_Back_to_menu_pressed"]
