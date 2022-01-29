@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Rat.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/graphics/mountain_world/tileset_mountains/tileset_tileset_mountains.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/graphics/mountain_world/tileset_mountains/tileset_mountains.tres" type="TileSet" id=2]
 [ext_resource path="res://scenes/Map_Base.gd" type="Script" id=3]
 [ext_resource path="res://assets/graphics/mountain_world/mount_bg2.png" type="Texture" id=4]
 
@@ -20,7 +20,7 @@ centered_textures = true
 collision_layer = 3
 collision_mask = 3
 format = 1
-tile_data = PoolIntArray( 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524299, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0 )
+tile_data = PoolIntArray( 458767, 1, 0, 458771, 2, 0, 589837, 3, 0, 589838, 3, 0, 589839, 3, 0, 589840, 3, 0, 655370, 0, 196611 )
 
 [node name="Walls" type="Node2D" parent="."]
 
