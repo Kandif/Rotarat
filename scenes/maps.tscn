@@ -1,0 +1,387 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/graphics/rat/szczur1.png" type="Texture" id=1]
+[ext_resource path="res://scripts/maps.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 2048, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 2560, 0, 512, 512 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="SphereMesh" id=8]
+
+[node name="maps" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="rat1" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 0.698039, 0.121569, 1 )
+position = Vector2( 373.847, 1019.36 )
+rotation = -2.42077
+scale = Vector2( 0.654687, 0.654687 )
+z_index = 2
+frames = SubResource( 7 )
+frame = 5
+playing = true
+offset = Vector2( -100, 0 )
+flip_h = true
+
+[node name="rat2" type="AnimatedSprite" parent="."]
+modulate = Color( 0, 0.980392, 0.843137, 1 )
+position = Vector2( 1618.49, 962.587 )
+scale = Vector2( 0.654687, 0.654687 )
+z_index = 2
+frames = SubResource( 7 )
+frame = 4
+playing = true
+offset = Vector2( 80, 0 )
+
+[node name="maps1" type="Node2D" parent="."]
+
+[node name="map1" type="Container" parent="maps1"]
+margin_left = 458.536
+margin_top = 992.581
+margin_right = 532.536
+margin_bottom = 1028.58
+rect_rotation = -132.1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps1/map1"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map2" type="Container" parent="maps1"]
+margin_left = 347.894
+margin_top = 879.535
+margin_right = 421.894
+margin_bottom = 915.535
+rect_rotation = -112.3
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps1/map2"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map3" type="Container" parent="maps1"]
+margin_left = 295.762
+margin_top = 738.903
+margin_right = 369.762
+margin_bottom = 775.903
+rect_rotation = -105.7
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps1/map3"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map4" type="Container" parent="maps1"]
+margin_left = 270.632
+margin_top = 596.087
+margin_right = 344.632
+margin_bottom = 632.087
+rect_rotation = -85.9
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps1/map4"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map5" type="Container" parent="maps1"]
+margin_left = 293.784
+margin_top = 455.853
+margin_right = 367.784
+margin_bottom = 491.853
+rect_rotation = -72.7
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps1/map5"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map6" type="Container" parent="maps1"]
+margin_left = 336.738
+margin_top = 328.833
+margin_right = 410.738
+margin_bottom = 364.833
+rect_rotation = -59.4
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps1/map6"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map7" type="Container" parent="maps1"]
+margin_left = 403.656
+margin_top = 218.496
+margin_right = 477.656
+margin_bottom = 254.496
+rect_rotation = -52.8
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps1/map7"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map8" type="Container" parent="maps1"]
+margin_left = 501.819
+margin_top = 72.6358
+margin_right = 575.819
+margin_bottom = 108.636
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps1/map8"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map9" type="Container" parent="maps1"]
+margin_left = 590.658
+margin_top = 26.598
+margin_right = 664.658
+margin_bottom = 62.598
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps1/map9"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map10" type="Container" parent="maps1"]
+margin_left = 687.125
+margin_top = -13.0459
+margin_right = 761.125
+margin_bottom = 22.9541
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps1/map10"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="maps2" type="Node2D" parent="."]
+
+[node name="map1" type="Container" parent="maps2"]
+margin_left = 1174.37
+margin_top = 976.025
+margin_right = 1248.37
+margin_bottom = 1012.02
+rect_rotation = 132.1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps2/map1"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map2" type="Container" parent="maps2"]
+margin_left = 1241.28
+margin_top = 862.822
+margin_right = 1315.28
+margin_bottom = 898.822
+rect_rotation = 112.3
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps2/map2"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map3" type="Container" parent="maps2"]
+margin_left = 1293.44
+margin_top = 726.518
+margin_right = 1367.44
+margin_bottom = 762.518
+rect_rotation = 105.7
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps2/map3"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map4" type="Container" parent="maps2"]
+margin_left = 1343.02
+margin_top = 592.948
+margin_right = 1417.02
+margin_bottom = 628.948
+rect_rotation = 99.1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps2/map4"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map5" type="Container" parent="maps2"]
+margin_left = 1341.48
+margin_top = 449.17
+margin_right = 1415.48
+margin_bottom = 485.17
+rect_rotation = 72.7
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps2/map5"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map6" type="Container" parent="maps2"]
+margin_left = 1294.47
+margin_top = 298.379
+margin_right = 1368.47
+margin_bottom = 334.379
+rect_rotation = 72.7
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps2/map6"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map7" type="Container" parent="maps2"]
+margin_left = 1187.6
+margin_top = 171.552
+margin_right = 1261.6
+margin_bottom = 207.552
+rect_rotation = 46.2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps2/map7"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map8" type="Container" parent="maps2"]
+margin_left = 1881.03
+margin_top = 362.602
+margin_right = 1955.03
+margin_bottom = 398.602
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps2/map8"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map9" type="Container" parent="maps2"]
+margin_left = 2011.28
+margin_top = 292.755
+margin_right = 2085.28
+margin_bottom = 328.755
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps2/map9"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )
+
+[node name="map10" type="Container" parent="maps2"]
+margin_left = 2196.28
+margin_top = 347.5
+margin_right = 2270.28
+margin_bottom = 383.5
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="MeshInstance2D" parent="maps2/map10"]
+position = Vector2( 36.5391, 17.6175 )
+scale = Vector2( 39.0594, 17.2913 )
+mesh = SubResource( 8 )

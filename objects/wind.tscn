@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/graphics/water_world/wind.png" type="Texture" id=1]
+
+[node name="wind" type="Area2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -45.5569
+margin_top = -46.6164
+margin_right = 49.4431
+margin_bottom = 48.3836
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

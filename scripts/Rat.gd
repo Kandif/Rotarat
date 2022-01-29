@@ -58,11 +58,15 @@ func _process(delta):
 	$cam.position = $Player.position
 
 func _input(event):
+	
+	if event.is_pressed():
+		pass
 	if event.is_pressed() && event is InputEventMouseButton && !$Tween.is_active() && GameStatus.left_screen==left_side:
 		if event.button_index == (1):
 			rotate_right()
 		elif event.button_index == (2):	
 			rotate_left()
+	
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_UP && !$Tween.is_active() && !ray.up.is_colliding():
 		go_up()
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_LEFT && !$Tween.is_active() && !ray.left.is_colliding():
@@ -101,6 +105,11 @@ func rotate_left():
 	player.get_node("anmt").frame=0
 	$Tween.interpolate_property(camera,"rotation_degrees",camera.rotation_degrees,camera.rotation_degrees-90,0.5)
 	$Tween.interpolate_property(player,"rotation_degrees",player.rotation_degrees,player.rotation_degrees-90,0.5)
+	for walls in get_node("../Walls").get_children():
+		$Tween.interpolate_property(walls,"rotation_degrees",walls.rotation_degrees,walls.rotation_degrees-90,0.5)
+	for walls in get_node("../Back_Objects").get_children():
+		$Tween.interpolate_property(walls,"rotation_degrees",walls.rotation_degrees,walls.rotation_degrees-90,0.5)
+	
 	$Player/CollisionShape2D.disabled = true
 	$Tween.start()
 	
@@ -108,6 +117,10 @@ func rotate_right():
 	player.get_node("anmt").frame=0
 	$Tween.interpolate_property(camera,"rotation_degrees",camera.rotation_degrees,camera.rotation_degrees+90,0.5)
 	$Tween.interpolate_property(player,"rotation_degrees",player.rotation_degrees,player.rotation_degrees+90,0.5)
+	for walls in get_node("../Walls").get_children():
+		$Tween.interpolate_property(walls,"rotation_degrees",walls.rotation_degrees,walls.rotation_degrees+90,0.5)
+	for walls in get_node("../Back_Objects").get_children():
+		$Tween.interpolate_property(walls,"rotation_degrees",walls.rotation_degrees,walls.rotation_degrees+90,0.5)
 	$Player/CollisionShape2D.disabled = true
 	$Tween.start()	
 
@@ -125,6 +138,10 @@ func reset():
 	$Tween.interpolate_property(player,"rotation",player.rotation,0,1)
 	$Tween.interpolate_property(camera,"rotation",camera.rotation,0,1)
 	$Tween.start()
+	for walls in get_node("../Walls").get_children():
+		$Tween.interpolate_property(walls,"rotation_degrees",walls.rotation_degrees,0,0.5)
+	for walls in get_node("../Back_Objects").get_children():
+		$Tween.interpolate_property(walls,"rotation_degrees",walls.rotation_degrees,0,0.5)
 #	player.global_position = start_position
 #	player.rotation = 0
 #	camera.rotation = 0
