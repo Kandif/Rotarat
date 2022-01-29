@@ -7,8 +7,12 @@ var player_id = 1
 onready var camera = $cam
 onready var player = $Player
 
+var zoom = 1
+
 var start_position = Vector2.ZERO
 var start_rotation = 0
+
+var status = "normal"
 
 onready var tiles:TileMap = $"../TileMap"
 
@@ -59,21 +63,31 @@ func _process(delta):
 
 func _input(event):
 	
-	if event.is_pressed():
-		pass
-	if event.is_pressed() && event is InputEventMouseButton && !$Tween.is_active() && GameStatus.left_screen==left_side:
+	if event.is_pressed() && event is InputEventMouseButton && event.button_index == BUTTON_WHEEL_DOWN:
+		zoom += 0.1
+		if zoom >= 4.0:
+			zoom = 4.0
+		camera.zoom=Vector2(zoom,zoom)
+		
+	elif event.is_pressed() && event is InputEventMouseButton && event.button_index == BUTTON_WHEEL_UP:	
+		zoom -= 0.1
+		if zoom <= 1.0:
+			zoom = 1.0
+		camera.zoom=Vector2(zoom,zoom)
+
+	if event.is_pressed() && event is InputEventMouseButton && !$Tween.is_active() && GameStatus.left_screen==left_side && !GameStatus.moving():
 		if event.button_index == (1):
 			rotate_right()
 		elif event.button_index == (2):	
 			rotate_left()
 	
-	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_UP && !$Tween.is_active() && !ray.up.is_colliding():
+	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_UP && !$Tween.is_active() && !ray.up.is_colliding() && !GameStatus.moving():
 		go_up()
-	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_LEFT && !$Tween.is_active() && !ray.left.is_colliding():
+	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_LEFT && !$Tween.is_active() && !ray.left.is_colliding() && !GameStatus.moving():
 		go_left()
-	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_RIGHT && !$Tween.is_active() && !ray.right.is_colliding():	
+	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_RIGHT && !$Tween.is_active() && !ray.right.is_colliding() && !GameStatus.moving():	
 		go_right()
-	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_DOWN && !$Tween.is_active() && !ray.down.is_colliding():
+	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_DOWN && !$Tween.is_active() && !ray.down.is_colliding() && !GameStatus.moving():
 		go_down()
 
 
@@ -105,6 +119,8 @@ func rotate_left():
 	player.get_node("anmt").frame=0
 	$Tween.interpolate_property(camera,"rotation_degrees",camera.rotation_degrees,camera.rotation_degrees-90,0.5)
 	$Tween.interpolate_property(player,"rotation_degrees",player.rotation_degrees,player.rotation_degrees-90,0.5)
+	$Tween.interpolate_property(player.get_node("anmt"),"scale",player.get_node("anmt").scale,player.get_node("anmt").scale * Vector2(1.5,1.5),0.25)
+	$Tween.interpolate_property(player.get_node("anmt"),"scale",player.get_node("anmt").scale * Vector2(1.5,1.5), player.get_node("anmt").scale, 0.25,Tween.EASE_IN,Tween.TRANS_LINEAR,0.25)
 	for walls in get_node("../Walls").get_children():
 		$Tween.interpolate_property(walls,"rotation_degrees",walls.rotation_degrees,walls.rotation_degrees-90,0.5)
 	for walls in get_node("../Back_Objects").get_children():
@@ -117,6 +133,8 @@ func rotate_right():
 	player.get_node("anmt").frame=0
 	$Tween.interpolate_property(camera,"rotation_degrees",camera.rotation_degrees,camera.rotation_degrees+90,0.5)
 	$Tween.interpolate_property(player,"rotation_degrees",player.rotation_degrees,player.rotation_degrees+90,0.5)
+	$Tween.interpolate_property(player.get_node("anmt"),"scale",player.get_node("anmt").scale,player.get_node("anmt").scale * Vector2(1.5,1.5),0.25)
+	$Tween.interpolate_property(player.get_node("anmt"),"scale",player.get_node("anmt").scale * Vector2(1.5,1.5), player.get_node("anmt").scale, 0.25,Tween.EASE_IN,Tween.TRANS_LINEAR,0.25)
 	for walls in get_node("../Walls").get_children():
 		$Tween.interpolate_property(walls,"rotation_degrees",walls.rotation_degrees,walls.rotation_degrees+90,0.5)
 	for walls in get_node("../Back_Objects").get_children():
@@ -126,11 +144,27 @@ func rotate_right():
 
 func _on_Tween_tween_all_completed():
 	$Player/CollisionShape2D.disabled = false
-	GameStatus.move[player_id-1] = false
+	
 	var id_tile = tiles.get_cellv(tiles.world_to_map(tiles.to_local(player.get_node("anmt").global_position)))
 	
 	if id_tile == -1:
 		GameStatus.set_died()
+	GameStatus.set_test()
+	GameStatus.move[player_id-1] = false
+	for area in $"Player/action-colision".get_overlapping_areas():
+		if area.is_in_group("wind"):
+			GameStatus.move[player_id-1] = true
+			match(area.direction):
+				DIRC.left:
+					go_left()
+				DIRC.right:
+					go_left()
+				DIRC.up:
+					go_left()
+				DIRC.down:
+					go_left()			
+	
+	
 	
 	
 func reset():
@@ -149,11 +183,15 @@ func reset():
 func _on_actioncolision_area_entered(area):
 	if area.is_in_group("finish"):
 		GameStatus.finish[player_id-1] = true
+	if area.is_in_group("wind"):
+		status="wind"
 
 
 func _on_actioncolision_area_exited(area):
 	if area.is_in_group("finish"):
 		GameStatus.finish[player_id-1] = false
+	if area.is_in_group("wind"):
+		status="normal"
 
 
 func _on_Tween_tween_started(object, key):
@@ -163,5 +201,5 @@ func _on_Tween_tween_started(object, key):
 	else:
 		player.get_node("anmt").offset.y=0
 		player.get_node("anmt").offset.x=0
-	GameStatus.move[player_id-1] = false
+	GameStatus.move[player_id-1] = true
 	move = true

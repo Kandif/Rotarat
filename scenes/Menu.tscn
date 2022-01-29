@@ -25,10 +25,10 @@ __meta__ = {
 }
 
 [node name="Main" type="VBoxContainer" parent="."]
-margin_left = 87.0
-margin_top = 609.0
-margin_right = 371.0
-margin_bottom = 1001.0
+margin_left = 95.0
+margin_top = 380.0
+margin_right = 663.0
+margin_bottom = 1021.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_group_": true,
@@ -222,6 +222,8 @@ rect_min_size = Vector2( 400, 0 )
 custom_icons/grabber_disabled = ExtResource( 7 )
 custom_icons/grabber_highlight = ExtResource( 7 )
 custom_icons/grabber = ExtResource( 7 )
+max_value = 1.0
+step = 0.05
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -235,6 +237,8 @@ rect_min_size = Vector2( 400, 0 )
 custom_icons/grabber_disabled = ExtResource( 7 )
 custom_icons/grabber_highlight = ExtResource( 7 )
 custom_icons/grabber = ExtResource( 7 )
+max_value = 1.0
+step = 0.05
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -350,8 +354,11 @@ text = "Music/SFX: Emma Almond"
 align = 1
 valign = 1
 
+[connection signal="pressed" from="Main/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Main/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Main/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="Main/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="SettingsView/Back to menu" to="." method="_on_SettingsBack_to_menu_pressed"]
+[connection signal="value_changed" from="SettingsView/sfxslider" to="." method="_on_sfxslider_value_changed"]
+[connection signal="value_changed" from="SettingsView/musicslider" to="." method="_on_musicslider_value_changed"]
 [connection signal="pressed" from="CreditsView/Back to menu" to="." method="_on_Back_to_menu_pressed"]
