@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/graphics/objects/crystal_slizg.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 28.3482, 28.0332 )
+
+[node name="ice" type="Area2D" groups=["ice"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.619034, 0.213799 )
+shape = SubResource( 1 )
+
+[node name="CrystalSlizg" type="Sprite" parent="."]
+texture = ExtResource( 1 )

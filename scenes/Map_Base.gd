@@ -20,16 +20,60 @@ onready var walls = ["res://assets/graphics/water_world/1.png", "res://assets/gr
 onready var small_objects = ["res://assets/graphics/water_world/s_ob_1.png", "res://assets/graphics/NO_OBJ_PLACEHOLDER.png", "res://assets/graphics/crystal_world/s_ob_3.png"]
 onready var backgrounds = ["res://assets/graphics/water_world/bg_1.png", "res://assets/graphics/candy_world/bg_2.png", "res://assets/graphics/crystal_world/bg_3.png"]
 
-
+onready var wind = preload("res://objects/wind.tscn")
+onready var glue = preload("res://objects/glue.tscn")
+onready var ice = preload("res://objects/ice.tscn")
 
 export var biom_id = 1
 
 onready var tilemap = $"TileMap"
 
+onready var tilemap2 = $"TileMap2"
 
+enum DIRC { up,down,left,right }
 
 
 func _ready():
+
+	for cell in tilemap2.get_used_cells_by_id(0):
+		tilemap2.set_cell(cell.x, cell.y, -1)
+		var wall = wind.instance()
+		wall.direction = DIRC.up
+		wall.position = tilemap2.map_to_world(cell)
+		$"another".add_child(wall)
+	for cell in tilemap2.get_used_cells_by_id(1):
+		tilemap2.set_cell(cell.x, cell.y, -1)
+		var wall = wind.instance()
+		wall.direction = DIRC.left
+		wall.position = tilemap2.map_to_world(cell)
+		$"another".add_child(wall)
+	for cell in tilemap2.get_used_cells_by_id(2):
+		tilemap2.set_cell(cell.x, cell.y, -1)
+		var wall = wind.instance()
+		wall.direction = DIRC.down
+		wall.position = tilemap2.map_to_world(cell)
+		$"another".add_child(wall)
+	for cell in tilemap2.get_used_cells_by_id(3):
+		tilemap2.set_cell(cell.x, cell.y, -1)
+		var wall = wind.instance()
+		wall.direction = DIRC.right
+		wall.position = tilemap2.map_to_world(cell)
+		$"another".add_child(wall)
+	for cell in tilemap2.get_used_cells_by_id(4):
+		tilemap2.set_cell(cell.x, cell.y, -1)
+		var wall = glue.instance()
+		wall.position = tilemap2.map_to_world(cell)
+		$"another".add_child(wall)
+	for cell in tilemap2.get_used_cells_by_id(5):
+		tilemap2.set_cell(cell.x, cell.y, -1)
+		var wall = ice.instance()
+		wall.position = tilemap2.map_to_world(cell)
+		$"another".add_child(wall)				
+					
+					
+
+
+
 
 	for cell in tilemap.get_used_cells_by_id(1):
 		tilemap.set_cell(cell.x, cell.y, -1)

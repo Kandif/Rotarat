@@ -20,6 +20,8 @@ var dirc = [["left","right","up","down"],["right","left","down","up"]]
 
 var move = false
 
+enum DIRC { up,down,left,right }
+
 var ray = {}
 
 func _ready():
@@ -82,13 +84,25 @@ func _input(event):
 			rotate_left()
 	
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_UP && !$Tween.is_active() && !ray.up.is_colliding() && !GameStatus.moving():
-		go_up()
+		if status=="glue":
+			status="normal"
+		else:	
+			go_up()
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_LEFT && !$Tween.is_active() && !ray.left.is_colliding() && !GameStatus.moving():
-		go_left()
+		if status=="glue":
+			status="normal"
+		else:	
+			go_left()
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_RIGHT && !$Tween.is_active() && !ray.right.is_colliding() && !GameStatus.moving():	
-		go_right()
+		if status=="glue":
+			status="normal"
+		else:
+			go_right()
 	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_DOWN && !$Tween.is_active() && !ray.down.is_colliding() && !GameStatus.moving():
-		go_down()
+		if status=="glue":
+			status="normal"
+		else:
+			go_down()
 
 
 func go_left():
@@ -156,15 +170,51 @@ func _on_Tween_tween_all_completed():
 			GameStatus.move[player_id-1] = true
 			match(area.direction):
 				DIRC.left:
-					go_left()
+					if !ray.left.is_colliding():
+						go_left()
+					else:
+						GameStatus.move[player_id-1] = false	
 				DIRC.right:
-					go_left()
+					if !ray.right.is_colliding():
+						go_right()
+					else:
+						GameStatus.move[player_id-1] = false	
 				DIRC.up:
-					go_left()
+					if !ray.up.is_colliding():
+						go_up()
+					else:
+						GameStatus.move[player_id-1] = false	
 				DIRC.down:
-					go_left()			
-	
-	
+					if !ray.down.is_colliding():
+						go_down()		
+					else:		
+						GameStatus.move[player_id-1] = false
+		elif area.is_in_group("glue"):
+			status="glue"
+		elif area.is_in_group("ice"):
+			match($Player/anmt.animation):
+				"up":
+					if !ray.up.is_colliding():
+						go_up()
+					else:
+						GameStatus.move[player_id-1] = false
+				"left":
+					if !ray.left.is_colliding():
+						go_left()
+					else:
+						GameStatus.move[player_id-1] = false
+				"down":
+					if !ray.down.is_colliding():
+						go_down()
+					else:
+						GameStatus.move[player_id-1] = false
+				"right":
+					if !ray.right.is_colliding():
+						go_right()
+					else:
+						GameStatus.move[player_id-1] = false
+					
+			
 	
 	
 func reset():

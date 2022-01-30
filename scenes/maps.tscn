@@ -58,7 +58,6 @@ rotation = -2.42077
 scale = Vector2( 0.4, 0.4 )
 z_index = 2
 frames = SubResource( 7 )
-frame = 3
 playing = true
 offset = Vector2( -100, 0 )
 flip_h = true
@@ -70,7 +69,7 @@ rotation = 2.0752
 scale = Vector2( 0.4, 0.4 )
 z_index = 2
 frames = SubResource( 7 )
-frame = 2
+frame = 5
 playing = true
 offset = Vector2( 80, 0 )
 
