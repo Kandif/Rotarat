@@ -93,7 +93,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 12 )
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -369,6 +368,10 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 961.0
+margin_top = 541.0
+margin_right = -959.0
+margin_bottom = -539.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -420,11 +423,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Back" type="Label" parent="CreditsView"]
-margin_left = 883.0
-margin_top = 786.0
-margin_right = 1065.0
-margin_bottom = 847.0
+[node name="Back" type="Label" parent="CreditsView/Back to menu"]
+margin_left = 145.0
+margin_top = 81.8749
+margin_right = 327.0
+margin_bottom = 142.875
 input_pass_on_modal_close_click = false
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
 custom_fonts/font = ExtResource( 3 )
