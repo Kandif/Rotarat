@@ -6,6 +6,7 @@
 [node name="map0" type="Node2D"]
 
 [node name="Map_Base" parent="." instance=ExtResource( 1 )]
+biom_id = 0
 
 [node name="Rat" parent="Map_Base" index="0"]
 position = Vector2( 1330, 950 )
@@ -13,10 +14,10 @@ position = Vector2( 1330, 950 )
 [node name="TileMap" parent="Map_Base" index="1"]
 tile_data = PoolIntArray( 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 393233, 3, 0, 458762, 3, 0, 458765, 1, 0, 458766, 0, 3, 458767, 1, 0, 524300, 0, 4, 524301, 0, 196609, 524302, 0, 262151, 524303, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 0, 65539, 589837, 1, 0, 589838, 0, 65539, 589839, 1, 0, 589840, 0, 3, 589841, 1, 0, 589842, 1, 0, 655370, 1, 0, 655371, 0, 196608, 655372, 0, 196616, 655373, 0, 196609, 655374, 0, 262152, 655375, 0, 196609, 655376, 0, 262152, 655377, 0, 196610, 655378, 1, 0, 720906, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 0, 65539, 720911, 1, 0, 720912, 0, 65539, 720913, 1, 0, 720914, 1, 0, 786441, 2, 0, 786445, 1, 0, 786446, 0, 262148, 786447, 0, 196609, 786448, 0, 196615, 851979, 2, 0, 851981, 1, 0, 851982, 0, 131075, 851983, 1, 0, 851985, 2, 0, 917517, 1, 0, 917518, 1, 0, 917519, 1, 0 )
 
-[node name="Back_Objects" parent="Map_Base" index="3"]
+[node name="Back_Objects" parent="Map_Base" index="4"]
 z_index = -1
 
-[node name="CanvasLayer" parent="Map_Base" index="4"]
+[node name="CanvasLayer" parent="Map_Base" index="5"]
 layer = -2
 
 [node name="Node2D" parent="." instance=ExtResource( 2 )]

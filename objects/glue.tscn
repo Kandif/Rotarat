@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/graphics/objects/gluey.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 35.8587, 34.7451 )
+
+[node name="glue" type="Area2D" groups=["glue"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["glue"]]
+position = Vector2( 4.03973, 3.46196 )
+shape = SubResource( 1 )
+
+[node name="Gluey" type="Sprite" parent="."]
+texture = ExtResource( 1 )
