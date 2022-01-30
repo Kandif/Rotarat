@@ -1,5 +1,13 @@
 extends Node2D
 
+
+func _process(delta):
+	if Input.is_key_pressed(KEY_A) && Input.is_key_pressed(KEY_B) && Input.is_key_pressed(KEY_C):
+		for i in 8:
+			$maps1.get_node("map"+str(i+1)).unlock()
+			$maps2.get_node("map"+str(i+1)).unlock()
+			$outro.disabled= false
+
 func succed(index):
 	if index<12:
 		$maps1.get_node("map"+str(index)).succed()

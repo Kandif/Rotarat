@@ -20,10 +20,10 @@ script = ExtResource( 3 )
 modulate = Color( 1, 1, 1, 0 )
 
 [node name="rat1" parent="maps" index="1"]
-frame = 2
+frame = 4
 
 [node name="rat2" parent="maps" index="2"]
-frame = 1
+frame = 3
 
 [node name="Tween" type="Tween" parent="."]
 
