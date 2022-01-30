@@ -501,6 +501,9 @@ text = "Music/SFX: Emma Almond"
 align = 1
 valign = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "sounds"
+
 [connection signal="pressed" from="Main/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Main/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Main/Credits" to="." method="_on_Credits_pressed"]
