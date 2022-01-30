@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/graphics/UI/arrow.png" type="Texture" id=1]
 [ext_resource path="res://assets/graphics/UI/settings_bg.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/graphics/backgrounds/menu_bg_sky.png" type="Texture" id=13]
 [ext_resource path="res://assets/graphics/backgrounds/menu_bg_planet.png" type="Texture" id=14]
 [ext_resource path="res://assets/graphics/rat/szczur1.png" type="Texture" id=15]
+[ext_resource path="res://assets/graphics/logo.png" type="Texture" id=16]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -93,6 +94,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 12 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -152,6 +154,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Logo_menu" type="Sprite" parent="Main"]
+position = Vector2( 883.541, -205.5 )
+scale = Vector2( 0.25321, 0.25321 )
+texture = ExtResource( 16 )
+
 [node name="Play" type="TextureButton" parent="Main"]
 margin_right = 468.0
 margin_bottom = 137.0
@@ -160,7 +167,7 @@ texture_normal = ExtResource( 8 )
 [node name="Label" type="Label" parent="Main/Play"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.521569, 0.356863, 0.521569, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Play"
 align = 1
@@ -178,7 +185,7 @@ texture_normal = ExtResource( 10 )
 [node name="Label" type="Label" parent="Main/Settings"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.521569, 0.356863, 0.521569, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Settings"
 align = 1
@@ -196,7 +203,7 @@ texture_normal = ExtResource( 11 )
 [node name="Label" type="Label" parent="Main/Credits"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.521569, 0.356863, 0.521569, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Credits"
 align = 1
@@ -214,7 +221,7 @@ texture_normal = ExtResource( 9 )
 [node name="Label" type="Label" parent="Main/Quit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.521569, 0.356863, 0.521569, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Quit"
 align = 1
@@ -229,6 +236,15 @@ margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="Logo_menu" type="Sprite" parent="SettingsView"]
+modulate = Color( 1, 1, 1, 0.596078 )
+position = Vector2( 336, 202 )
+scale = Vector2( 0.208274, 0.208274 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_lock_": true
 }
 
 [node name="TextureRect" type="TextureRect" parent="SettingsView"]
@@ -375,6 +391,12 @@ margin_bottom = -539.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Logo_menu" type="Sprite" parent="CreditsView"]
+modulate = Color( 1, 1, 1, 0.596078 )
+position = Vector2( -625, -339 )
+scale = Vector2( 0.208274, 0.208274 )
+texture = ExtResource( 16 )
 
 [node name="bg" type="TextureRect" parent="CreditsView"]
 anchor_left = 0.5
