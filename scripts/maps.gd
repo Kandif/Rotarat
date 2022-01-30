@@ -59,3 +59,34 @@ func click(event,map):
 	if event.is_pressed() && event is InputEventMouseButton && visible && !map.disabled_map:	
 		var id = int(map.name.substr(3))
 		get_parent().to_game(id)
+
+
+onready var sounds = [
+	"res://assets/sfx/menusfx/klik1.wav",
+	"res://assets/sfx/menusfx/klik2.wav",
+	"res://assets/sfx/menusfx/klik3.wav",
+	"res://assets/sfx/menusfx/klik4.wav",
+	"res://assets/sfx/menusfx/klik5.wav"
+]
+
+func play_sound():
+	$"AudioStreamPlayer".stream = load(sounds[randi() % 5])
+	$"AudioStreamPlayer".play()
+
+
+
+
+func _on_back_pressed():
+	play_sound()
+	GameStatus.to_menu()
+	pass # Replace with function body.
+
+
+func _on_intro_pressed():
+	GameStatus.intro()
+	pass # Replace with function body.
+
+
+func _on_outro_pressed():
+	GameStatus.outro()
+	pass # Replace with function body.

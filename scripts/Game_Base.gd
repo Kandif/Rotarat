@@ -11,10 +11,17 @@ var bioms_frames= [
 ]
 	
 func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		$bgg/BG.visible = false
+	
+	
 	if get_global_mouse_position().x<859:
 		GameStatus.left_screen = true
 	else:
 		GameStatus.left_screen = false
+	
+func set_tutorial():
+	$bgg/BG.visible = true	
 	
 func set_biom(biom):
 	match(biom):
@@ -26,3 +33,8 @@ func set_biom(biom):
 			$TextureRect.texture = bioms_frames[2]
 		4:			
 			$TextureRect.texture = bioms_frames[3]
+
+
+func _on_back_pressed():
+	GameStatus.to_maps()
+	pass # Replace with function body.

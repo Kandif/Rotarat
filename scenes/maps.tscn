@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/graphics/rat/szczur1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/maps.gd" type="Script" id=2]
 [ext_resource path="res://assets/graphics/backgrounds/mapka_clean.png" type="Texture" id=3]
 [ext_resource path="res://objects/map.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/graphics/objects/icon_video_active.png" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/objects/icon_video_unactive.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/font_64_label.tres" type="DynamicFont" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -44,6 +46,10 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="StreamTexture" id=8]
+flags = 4
+load_path = "res://.import/button1.png-c9d24591a5f31d937cecdcd60928258f.stex"
+
 [node name="maps" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -52,7 +58,6 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="rat1" type="AnimatedSprite" parent="."]
-modulate = Color( 1, 0.698039, 0.121569, 1 )
 position = Vector2( 709.062, 904.435 )
 rotation = -2.42077
 scale = Vector2( 0.4, 0.4 )
@@ -63,7 +68,6 @@ offset = Vector2( -100, 0 )
 flip_h = true
 
 [node name="rat2" type="AnimatedSprite" parent="."]
-modulate = Color( 0, 0.980392, 0.843137, 1 )
 position = Vector2( 1292.06, 877.472 )
 rotation = 2.0752
 scale = Vector2( 0.4, 0.4 )
@@ -80,46 +84,50 @@ position = Vector2( 746.216, 870.828 )
 rotation = -2.18515
 
 [node name="map2" parent="maps1" instance=ExtResource( 4 )]
-position = Vector2( 706.618, 826.28 )
+position = Vector2( 691.482, 789.281 )
 rotation = -2.0752
 
 [node name="map3" parent="maps1" instance=ExtResource( 4 )]
-position = Vector2( 672.677, 773.954 )
-rotation = -1.63712
+position = Vector2( 632.314, 673.046 )
+rotation = -1.52716
 
 [node name="map4" parent="maps1" instance=ExtResource( 4 )]
-position = Vector2( 636.615, 697.587 )
-rotation = -1.52891
+position = Vector2( 606.343, 586.589 )
+rotation = -1.41895
 
 [node name="map5" parent="maps1" instance=ExtResource( 4 )]
-position = Vector2( 611.592, 634.986 )
-rotation = -1.63886
+position = Vector2( 608.228, 470.17 )
+rotation = -1.20253
 
 [node name="map6" parent="maps1" instance=ExtResource( 4 )]
-position = Vector2( 596.309, 562.529 )
-rotation = -1.4207
+position = Vector2( 631.627, 380.895 )
+rotation = -0.98262
 
 [node name="map7" parent="maps1" instance=ExtResource( 4 )]
-position = Vector2( 597.897, 493.477 )
-rotation = -1.31074
+position = Vector2( 722.35, 258.026 )
+rotation = -0.654498
 
 [node name="map8" parent="maps1" instance=ExtResource( 4 )]
-position = Vector2( 608.215, 429.981 )
-rotation = -1.20079
+position = Vector2( 813.394, 186.121 )
+rotation = -0.10821
 
 [node name="map9" parent="maps1" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 630.438, 372.041 )
 rotation = -0.872665
 
 [node name="map10" parent="maps1" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 687.714, 281.532 )
 rotation = -0.654498
 
 [node name="map11" parent="maps1" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 756.765, 231.486 )
 rotation = -0.645772
 
 [node name="map12" parent="maps1" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 845.519, 179.701 )
 rotation = -0.20944
 
@@ -130,46 +138,50 @@ position = Vector2( 1231.59, 835.128 )
 rotation = 2.8414
 
 [node name="map2" parent="maps2" instance=ExtResource( 4 )]
-position = Vector2( 1277.84, 793.083 )
+position = Vector2( 1296.34, 764.493 )
 rotation = 2.40506
 
 [node name="map3" parent="maps2" instance=ExtResource( 4 )]
-position = Vector2( 1311.48, 752.72 )
-rotation = 2.40506
-
-[node name="map4" parent="maps2" instance=ExtResource( 4 )]
-position = Vector2( 1340.91, 695.539 )
+position = Vector2( 1353.52, 670.312 )
 rotation = 2.07694
 
+[node name="map4" parent="maps2" instance=ExtResource( 4 )]
+position = Vector2( 1371.18, 582.859 )
+rotation = 1.53065
+
 [node name="map5" parent="maps2" instance=ExtResource( 4 )]
-position = Vector2( 1356.05, 637.517 )
-rotation = 1.85878
+position = Vector2( 1374.55, 477.747 )
+rotation = 1.20253
 
 [node name="map6" parent="maps2" instance=ExtResource( 4 )]
-position = Vector2( 1366.14, 575.291 )
-rotation = 1.64061
+position = Vector2( 1347.64, 381.885 )
+rotation = 1.09432
 
 [node name="map7" parent="maps2" instance=ExtResource( 4 )]
-position = Vector2( 1377.91, 495.405 )
-rotation = 1.64061
+position = Vector2( 1228.23, 249.863 )
+rotation = 0.657989
 
 [node name="map8" parent="maps2" instance=ExtResource( 4 )]
-position = Vector2( 1364.45, 435.702 )
-rotation = 1.31249
+position = Vector2( 1105.45, 176.706 )
+rotation = 0.984366
 
 [node name="map9" parent="maps2" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 1339.23, 375.157 )
 rotation = 0.984366
 
 [node name="map10" parent="maps2" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 1274.48, 278.454 )
 rotation = 0.984366
 
 [node name="map11" parent="maps2" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 1207.21, 220.432 )
 rotation = 0.656244
 
 [node name="map12" parent="maps2" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 1117.13, 174.15 )
 rotation = 0.438078
 
@@ -189,10 +201,42 @@ margin_left = 929.385
 margin_top = 103.64
 margin_right = 1040.38
 margin_bottom = 169.64
+disabled = true
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 5 )
+texture_disabled = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="back" type="TextureButton" parent="."]
+margin_left = 45.0
+margin_top = 907.0
+margin_right = 513.0
+margin_bottom = 1044.0
+texture_normal = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 7 )
+text = "Menu"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "sounds"
+
+[connection signal="pressed" from="intro" to="." method="_on_intro_pressed"]
+[connection signal="pressed" from="outro" to="." method="_on_outro_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
 
 [editable path="maps2/map1"]

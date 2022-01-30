@@ -87,6 +87,11 @@ region = Rect2( 855, 0, 285, 285 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "biom_3",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 13 ), SubResource( 11 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 16 ), SubResource( 15 ) ],
 "loop": true,
 "name": "biom_2",
@@ -101,15 +106,10 @@ animations = [ {
 "loop": true,
 "name": "biom_1",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "biom_3",
-"speed": 5.0
 } ]
 
 [node name="Obj_big" type="AnimatedSprite" groups=["rotate"]]
 frames = SubResource( 6 )
 animation = "biom_0"
-frame = 2
+frame = 7
 playing = true

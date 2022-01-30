@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Map_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/Meta.tscn" type="PackedScene" id=2]
+
+[node name="map52" type="Node2D"]
+
+[node name="Map_Base" parent="." instance=ExtResource( 1 )]
+biom_id = 3
+
+[node name="Rat" parent="Map_Base" index="0"]
+left_side = false
+
+[node name="TileMap" parent="Map_Base" index="1"]
+tile_data = PoolIntArray( 9, 0, 3, 65544, 0, 196608, 65545, 0, 262152, 65546, 0, 196610, 131079, 0, 3, 131081, 0, 131075, 196614, 0, 196608, 196615, 0, 262152, 196616, 0, 196610, 262151, 0, 131075, 262153, 0, 3, 262155, 0, 196611, 327688, 0, 196608, 327689, 0, 262152, 327690, 0, 196610, 327692, 0, 196611, 393223, 0, 196611, 393225, 0, 131075, 393227, 0, 196611, 393229, 0, 196611, 458760, 0, 196611, 458762, 0, 196611, 458764, 0, 196611, 524295, 0, 196611, 524297, 0, 3, 524299, 0, 196611, 589832, 0, 196608, 589833, 0, 262152, 589834, 0, 196610, 589841, 2, 0, 655369, 0, 131075, 720902, 2, 0 )
+
+[node name="Node2D" parent="Map_Base" instance=ExtResource( 2 )]
+position = Vector2( 760, 475 )
+
+[editable path="Map_Base"]

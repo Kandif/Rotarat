@@ -34,7 +34,7 @@ enum DIRC { up,down,left,right }
 
 
 func _ready():
-
+	
 	for cell in tilemap2.get_used_cells_by_id(0):
 		tilemap2.set_cell(cell.x, cell.y, -1)
 		var wall = wind.instance()
@@ -72,7 +72,8 @@ func _ready():
 					
 					
 
-
+	if biom_id != 0:		
+		$"CanvasLayer/MountBg2".texture = load(backgrounds[biom_id - 1])
 
 
 	for cell in tilemap.get_used_cells_by_id(1):

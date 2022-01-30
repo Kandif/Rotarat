@@ -6,10 +6,9 @@
 [node name="map12" type="Node2D"]
 
 [node name="Map_Base" parent="." instance=ExtResource( 1 )]
-biom_id = 0
+biom_id = 2
 
 [node name="Rat" parent="Map_Base" index="0"]
-position = Vector2( 950, 570 )
 left_side = false
 
 [node name="TileMap" parent="Map_Base" index="1"]

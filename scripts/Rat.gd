@@ -48,7 +48,6 @@ func _ready():
 		$Player/ref_r.position = player.position + Vector2(0,-285)
 		fix = -1
 		$Player/anmt.position.x -= 285
-		$Player/anmt.modulate = Color.pink
 		$Player/CollisionShape2D.position.x -= 285
 		$"Player/action-colision".position.x -= 285
 		ray = {
@@ -64,7 +63,6 @@ func _ready():
 #		$Player/butts/right.rect_position.x += 285
 		$Player/anmt.animation = "left"
 		GameStatus.rats_ref[1] = self
-		$Player/anmt.modulate = Color.deepskyblue
 		$Player/ref_l.position = player.position + Vector2(0,285)
 		$Player/ref_r.position = player.position + Vector2(0,-285)
 		player_id = 2
@@ -87,22 +85,22 @@ func butt_press(butt):
 		"left":
 			var ev =  InputEventKey.new()
 			ev.pressed = true
-			ev.scancode = KEY_LEFT
+			ev.scancode = KEY_A
 			Input.parse_input_event(ev)	
 		"right":
 			var ev =  InputEventKey.new()
 			ev.pressed = true
-			ev.scancode = KEY_RIGHT
+			ev.scancode = KEY_D
 			Input.parse_input_event(ev)	
 		"up":
 			var ev =  InputEventKey.new()
 			ev.pressed = true
-			ev.scancode = KEY_UP
+			ev.scancode = KEY_W
 			Input.parse_input_event(ev)	
 		"down":
 			var ev =  InputEventKey.new()
 			ev.pressed = true
-			ev.scancode = KEY_DOWN
+			ev.scancode = KEY_S
 			Input.parse_input_event(ev)			
 	pass
 	
@@ -126,6 +124,10 @@ func _process(delta):
 
 
 func _input(event):
+	
+	if Input.is_action_just_pressed("ui_accept") && get_parent().get_parent().has_node("bgg"):
+		get_node("../../bgg/BG").visible = false
+	
 	if event.is_pressed() && event is InputEventMouseButton && event.button_index == BUTTON_WHEEL_DOWN:
 		zoom += 0.1
 		if zoom >= 4.0:
@@ -144,22 +146,22 @@ func _input(event):
 		elif event.button_index == (2):	
 			rotate_left()
 	
-	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_UP && !$Tween.is_active() && !ray.up.is_colliding() && !GameStatus.moving():
+	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_W && !$Tween.is_active() && !ray.up.is_colliding() && !GameStatus.moving():
 		if status=="glue":
 			status="normal"
 		else:	
 			go_up()
-	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_LEFT && !$Tween.is_active() && !ray.left.is_colliding() && !GameStatus.moving():
+	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_A && !$Tween.is_active() && !ray.left.is_colliding() && !GameStatus.moving():
 		if status=="glue":
 			status="normal"
 		else:	
 			go_left()
-	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_RIGHT && !$Tween.is_active() && !ray.right.is_colliding() && !GameStatus.moving():	
+	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_D && !$Tween.is_active() && !ray.right.is_colliding() && !GameStatus.moving():	
 		if status=="glue":
 			status="normal"
 		else:
 			go_right()
-	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_DOWN && !$Tween.is_active() && !ray.down.is_colliding() && !GameStatus.moving():
+	if event.is_pressed() && (event is InputEventKey) && event.scancode == KEY_S && !$Tween.is_active() && !ray.down.is_colliding() && !GameStatus.moving():
 		if status=="glue":
 			status="normal"
 		else:
@@ -215,7 +217,7 @@ func rotate_right():
 	for walls in get_node("../Back_Objects").get_children():
 		$Tween.interpolate_property(walls,"rotation_degrees",walls.rotation_degrees,walls.rotation_degrees+90,0.5)
 	$Player/CollisionShape2D.disabled = true
-	$Tween.start()	
+	$Tween.start()
 
 func _on_Tween_tween_all_completed():
 	$Player/CollisionShape2D.disabled = false
@@ -229,49 +231,59 @@ func _on_Tween_tween_all_completed():
 	for area in $"Player/action-colision".get_overlapping_areas():
 		if area.is_in_group("wind"):
 			GameStatus.move[player_id-1] = true
-			match(area.direction):
-				DIRC.left:
-					if !ray.left.is_colliding():
-						go_left()
-					else:
-						GameStatus.move[player_id-1] = false	
-				DIRC.right:
-					if !ray.right.is_colliding():
-						go_right()
-					else:
-						GameStatus.move[player_id-1] = false	
-				DIRC.up:
-					if !ray.up.is_colliding():
-						go_up()
-					else:
-						GameStatus.move[player_id-1] = false	
-				DIRC.down:
-					if !ray.down.is_colliding():
-						go_down()		
-					else:		
-						GameStatus.move[player_id-1] = false
+			var vectorx = area.vect.rotated(player.rotation)*fix
+			print(vectorx)
+			print(player.rotation)
+			if vectorx.x == -1:
+				if !ray.left.is_colliding():
+					go_left()
+				else:
+					GameStatus.move[player_id-1] = false	
+			if vectorx.x == 1:
+				if !ray.right.is_colliding():
+					go_right()
+				else:
+					GameStatus.move[player_id-1] = false	
+			if vectorx.y == -1:
+				if !ray.up.is_colliding():
+					go_up()
+				else:
+					GameStatus.move[player_id-1] = false	
+			if vectorx.y == 1:
+				if !ray.down.is_colliding():
+					go_down()
+				else:		
+					GameStatus.move[player_id-1] = false
 		elif area.is_in_group("glue"):
 			status="glue"
 		elif area.is_in_group("ice"):
 			match($Player/anmt.animation):
 				"up":
-					if !ray.up.is_colliding():
+					if left_side && !ray.up.is_colliding():
 						go_up()
-					else:
-						GameStatus.move[player_id-1] = false
-				"left":
-					if !ray.left.is_colliding():
-						go_left()
-					else:
-						GameStatus.move[player_id-1] = false
-				"down":
-					if !ray.down.is_colliding():
+					elif !left_side && !ray.down.is_colliding():
 						go_down()
 					else:
 						GameStatus.move[player_id-1] = false
-				"right":
-					if !ray.right.is_colliding():
+				"left":
+					if left_side && !ray.left.is_colliding():
+						go_left()
+					elif !left_side && !ray.right.is_colliding():
 						go_right()
+					else:
+						GameStatus.move[player_id-1] = false
+				"down":
+					if left_side && !ray.down.is_colliding():
+						go_down()
+					elif !left_side && !ray.up.is_colliding():
+						go_up()
+					else:
+						GameStatus.move[player_id-1] = false
+				"right":
+					if left_side && !ray.right.is_colliding():
+						go_right()
+					elif !left_side && !ray.left.is_colliding():
+						go_left()
 					else:
 						GameStatus.move[player_id-1] = false
 	

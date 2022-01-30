@@ -6,7 +6,7 @@
 [node name="map32" type="Node2D"]
 
 [node name="Map_Base" parent="." instance=ExtResource( 1 )]
-biom_id = 0
+biom_id = 3
 
 [node name="Rat" parent="Map_Base" index="0"]
 position = Vector2( 1045, 570 )

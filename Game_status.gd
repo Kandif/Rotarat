@@ -60,4 +60,17 @@ func set_test():
 	if main_ref!=null && finish[0] && finish[1]:
 		main_ref.finish_stage()
 		
+func to_maps():
+	main_ref.to_maps_game()	
+		
+func to_menu():
+	main_ref.to_menu()		
+		
+func intro():
+	main_ref.intro()		
+		
+func outro():
+	main_ref.outro()		
+						
+		
 
