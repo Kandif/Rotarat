@@ -1,6 +1,7 @@
 extends Control
 
 
+
 func _on_Credits_pressed():
 	$"Main".hide()
 	$"CreditsView".show()
@@ -24,6 +25,7 @@ func _on_SettingsBack_to_menu_pressed():
 	$"Main".show()
 
 func _ready():
+	$"Sprite/AnimationPlayer".play("planet_rot")
 	AudioServer.set_bus_volume_db(1, linear2db(GameStatus.music))
 	AudioServer.set_bus_volume_db(2, linear2db(GameStatus.audio))
 	$SettingsView/musicslider.value = GameStatus.music
