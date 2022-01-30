@@ -43,6 +43,13 @@ var rats_ref = {
 	1: null
 }
 
+func focus_butt(is_left,butt,is_b):
+	var bname = "right" if butt.name=="left" else "left" if butt.name=="right" else "down" if butt.name=="up" else "up"
+	if is_left:
+		rats_ref[1].focus_d(bname,is_b)
+	else:
+		rats_ref[0].focus_d(bname,is_b)
+		
 var main_ref = null
 
 func set_died():

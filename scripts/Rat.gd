@@ -25,8 +25,23 @@ enum DIRC { up,down,left,right }
 var ray = {}
 
 func _ready():
+#	if !left_side:
+#		$Player/butts/down.set_normal_texture(preload("res://assets/graphics/UI/gora.png"))  
+#		$Player/butts/up.set_normal_texture(preload("res://assets/graphics/UI/dol.png"))  
+#		$Player/butts/left.set_normal_texture(preload("res://assets/graphics/UI/prawo.png"))  
+#		$Player/butts/right.set_normal_texture(preload("res://assets/graphics/UI/lewo.png"))  
+#
+#	for butt in $Player/butts.get_children():
+#		butt.connect("pressed",self,"butt_press",[butt])
+#		butt.connect("mouse_entered",self,"focus",[butt,true])
+#		butt.connect("mouse_exited",self,"focus",[butt,false])
+	
 	start_position = player.global_position
 	if left_side:
+#		$Player/butts/down.rect_position.x -= 285
+#		$Player/butts/up.rect_position.x -= 285 
+#		$Player/butts/left.rect_position.x -= 285
+#		$Player/butts/right.rect_position.x -= 285
 		$Player/anmt.animation = "right"
 		GameStatus.rats_ref[0] = self
 		$Player/ref_l.position = player.position + Vector2(0,285)
@@ -43,6 +58,10 @@ func _ready():
 			"down" : get_node("Player/action-colision/down")
 		}
 	else:	
+#		$Player/butts/down.rect_position.x += 285
+#		$Player/butts/up.rect_position.x += 285 
+#		$Player/butts/left.rect_position.x += 285
+#		$Player/butts/right.rect_position.x += 285
 		$Player/anmt.animation = "left"
 		GameStatus.rats_ref[1] = self
 		$Player/anmt.modulate = Color.deepskyblue
@@ -59,18 +78,60 @@ func _ready():
 			"down" : get_node("Player/action-colision/up"),
 			"up" : get_node("Player/action-colision/down")
 		}
+		
+func butt_press(butt):
+	var bname = butt.name
+	if !left_side:
+		bname = "right" if butt.name=="left" else "left" if butt.name=="right" else "down" if butt.name=="up" else "up"
+	match(bname):
+		"left":
+			var ev =  InputEventKey.new()
+			ev.pressed = true
+			ev.scancode = KEY_LEFT
+			Input.parse_input_event(ev)	
+		"right":
+			var ev =  InputEventKey.new()
+			ev.pressed = true
+			ev.scancode = KEY_RIGHT
+			Input.parse_input_event(ev)	
+		"up":
+			var ev =  InputEventKey.new()
+			ev.pressed = true
+			ev.scancode = KEY_UP
+			Input.parse_input_event(ev)	
+		"down":
+			var ev =  InputEventKey.new()
+			ev.pressed = true
+			ev.scancode = KEY_DOWN
+			Input.parse_input_event(ev)			
+	pass
+	
+func focus(butt,is_b):
+	if is_b:
+		butt.modulate= Color(1,1,1,1)
+		GameStatus.focus_butt(left_side,butt,is_b)
+	else:
+		butt.modulate= Color(1,1,1,0.5)	
+		GameStatus.focus_butt(left_side,butt,is_b)
+
+func focus_d(bname,is_b):
+	if is_b:
+		$Player/butts.get_node(bname).modulate= Color(1,1,1,1)
+	else:
+		$Player/butts.get_node(bname).modulate= Color(1,1,1,0.5)	
+
 
 func _process(delta):
 	$cam.position = $Player.position
 
+
 func _input(event):
-	
 	if event.is_pressed() && event is InputEventMouseButton && event.button_index == BUTTON_WHEEL_DOWN:
 		zoom += 0.1
 		if zoom >= 4.0:
 			zoom = 4.0
 		camera.zoom=Vector2(zoom,zoom)
-		
+	
 	elif event.is_pressed() && event is InputEventMouseButton && event.button_index == BUTTON_WHEEL_UP:	
 		zoom -= 0.1
 		if zoom <= 1.0:
@@ -213,8 +274,6 @@ func _on_Tween_tween_all_completed():
 						go_right()
 					else:
 						GameStatus.move[player_id-1] = false
-					
-			
 	
 	
 func reset():
@@ -253,3 +312,5 @@ func _on_Tween_tween_started(object, key):
 		player.get_node("anmt").offset.x=0
 	GameStatus.move[player_id-1] = true
 	move = true
+
+

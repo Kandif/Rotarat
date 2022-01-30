@@ -4,7 +4,7 @@ var status = "nothing"
 
 var games = [
 	[preload("res://scenes/maps/map0.tscn"),preload("res://scenes/maps/map01.tscn"),"1"],
-	[preload("res://scenes/maps/map11.tscn"),preload("res://scenes/maps/map12.tscn"),"2"],
+	[preload("res://scenes/maps/map11.tscn"),preload("res://scenes/maps/map12.tscn"),"1"],
 	[preload("res://scenes/maps/map21.tscn"),preload("res://scenes/maps/map22.tscn"),"1"],
 ]
 
