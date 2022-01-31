@@ -25,10 +25,13 @@ var stage_id = 1
 var first = true
 
 func _ready():
+	OS.set_window_size(OS.get_screen_size())
 	GameStatus.main_ref = self
 	$musics/menu.play()
 	
 func to_maps():
+	status = "to_maps"
+	$maps.visible = true
 	if !GameStatus.maps[0] && first:
 		intro()
 		first = false
@@ -60,8 +63,9 @@ func to_game(id):
 	
 
 func finish_stage():
-	if stage_id ==8:
+	if stage_id == 8:
 		outro()
+		status = "back_to_maps"
 		$Tween.interpolate_property($maps,"modulate",Color(1,1,1,0),Color(1,1,1,1),2)
 		$Tween.interpolate_property($Game_Base,"modulate",Color(1,1,1,1),Color(1,1,1,0),2)
 		$Tween.start()
@@ -80,15 +84,18 @@ func finish_stage():
 		GameStatus.save()
 	
 func to_maps_game():
-	status = "back_to_maps"
-	$maps.visible=true
-	$Tween.interpolate_property($maps,"modulate",Color(1,1,1,0),Color(1,1,1,1),2)
-	$Tween.interpolate_property($Game_Base,"modulate",Color(1,1,1,1),Color(1,1,1,0),2)
-	$Tween.start()
+	if status != "back_to_maps":
+		status = "back_to_maps"
+		$maps.visible=true
+		$Tween.interpolate_property($maps,"modulate",Color(1,1,1,0),Color(1,1,1,1),2)
+		$Tween.interpolate_property($Game_Base,"modulate",Color(1,1,1,1),Color(1,1,1,0),2)
+		$Tween.start()
 
 func to_menu():
-	$Tween.interpolate_property($maps,"modulate",Color(1,1,1,1),Color(1,1,1,0),2)
-	$Tween.start()
+	if status!="to_menu":
+		status = "to_menu"
+		$Tween.interpolate_property($maps,"modulate",Color(1,1,1,1),Color(1,1,1,0),2)
+		$Tween.start()
 
 func _on_Tween_tween_all_completed():
 	match(status):
@@ -102,6 +109,11 @@ func _on_Tween_tween_all_completed():
 		"to_game":
 			$maps.visible = false
 			$musics.get_node(old_song).stop()
+			status="nothing"
+		"to_menu":
+			$maps.visible = false
+			status="nothing"
+					
 			
 func intro():
 	$into.visible = true

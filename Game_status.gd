@@ -11,6 +11,7 @@ var maps = [false,false,false,false,false,false,false,false,false,false,false,fa
 
 var audio = 0.5
 var music = 0.5
+var fullscreen = true
 
 func save():
 	var file = File.new()
@@ -21,7 +22,8 @@ func save():
 	var save_json = to_json({
 		"audio" : audio,
 		"music" : music,
-		"maps" : maps
+		"maps" : maps,
+		"fullscreen" : fullscreen
 	})
 	file.store_string(save_json)
 	file.close()
@@ -34,6 +36,10 @@ func _ready():
 		audio = all.audio
 		music = all.music
 		maps = all.maps
+		if all.has("fullscreen"):
+			fullscreen = all.fullscreen
+		else:
+			fullscreen = true
 		
 func moving():
 	return (move[0] || move[1])

@@ -123,7 +123,6 @@ position = Vector2( 830, 636 )
 rotation = -1.48353
 frames = SubResource( 10 )
 animation = "New Anim"
-frame = 1
 playing = true
 flip_h = true
 __meta__ = {
@@ -135,6 +134,7 @@ position = Vector2( 1632, 448 )
 rotation = -1.48353
 frames = SubResource( 10 )
 animation = "New Anim"
+frame = 5
 playing = true
 flip_v = true
 __meta__ = {
@@ -161,6 +161,7 @@ texture = ExtResource( 16 )
 [node name="Play" type="TextureButton" parent="Main"]
 margin_right = 468.0
 margin_bottom = 137.0
+focus_mode = 0
 texture_normal = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="Main/Play"]
@@ -179,6 +180,7 @@ __meta__ = {
 margin_top = 157.0
 margin_right = 468.0
 margin_bottom = 294.0
+focus_mode = 0
 texture_normal = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="Main/Settings"]
@@ -197,6 +199,7 @@ __meta__ = {
 margin_top = 314.0
 margin_right = 468.0
 margin_bottom = 451.0
+focus_mode = 0
 texture_normal = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="Main/Credits"]
@@ -215,6 +218,7 @@ __meta__ = {
 margin_top = 471.0
 margin_right = 468.0
 margin_bottom = 608.0
+focus_mode = 0
 texture_normal = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="Main/Quit"]
@@ -286,6 +290,7 @@ margin_top = 748.0
 margin_right = 1168.0
 margin_bottom = 967.0
 rect_scale = Vector2( 0.8, 0.8 )
+focus_mode = 0
 texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -342,9 +347,11 @@ margin_left = 895.0
 margin_top = 429.0
 margin_right = 979.0
 margin_bottom = 512.0
+focus_mode = 0
 custom_icons/checked = ExtResource( 5 )
 custom_icons/unchecked = ExtResource( 6 )
 custom_styles/focus = SubResource( 1 )
+pressed = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -355,6 +362,7 @@ margin_top = 555.0
 margin_right = 1213.0
 margin_bottom = 587.0
 rect_min_size = Vector2( 400, 0 )
+focus_mode = 0
 custom_icons/grabber_disabled = ExtResource( 7 )
 custom_icons/grabber_highlight = ExtResource( 7 )
 custom_icons/grabber = ExtResource( 7 )
@@ -370,6 +378,7 @@ margin_top = 659.0
 margin_right = 1213.0
 margin_bottom = 691.0
 rect_min_size = Vector2( 400, 0 )
+focus_mode = 0
 custom_icons/grabber_disabled = ExtResource( 7 )
 custom_icons/grabber_highlight = ExtResource( 7 )
 custom_icons/grabber = ExtResource( 7 )
@@ -439,6 +448,7 @@ margin_top = 185.5
 margin_right = 208.0
 margin_bottom = 404.5
 rect_scale = Vector2( 0.8, 0.8 )
+focus_mode = 0
 texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -508,6 +518,7 @@ bus = "sounds"
 [connection signal="pressed" from="Main/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="Main/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="pressed" from="SettingsView/Back to menu" to="." method="_on_SettingsBack_to_menu_pressed"]
+[connection signal="toggled" from="SettingsView/CheckBox" to="." method="_on_CheckBox_toggled"]
 [connection signal="value_changed" from="SettingsView/sfxslider" to="." method="_on_sfxslider_value_changed"]
 [connection signal="value_changed" from="SettingsView/musicslider" to="." method="_on_musicslider_value_changed"]
 [connection signal="pressed" from="CreditsView/Back to menu" to="." method="_on_Back_to_menu_pressed"]

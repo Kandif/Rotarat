@@ -12,6 +12,5 @@ tile_data = PoolIntArray( 65549, 2, 0, 65554, 0, 196611, 131080, 2, 0, 262158, 1
 
 [node name="Node2D" parent="Map_Base" instance=ExtResource( 1 )]
 position = Vector2( 1710, 95 )
-z_index = 2
 
 [editable path="Map_Base"]

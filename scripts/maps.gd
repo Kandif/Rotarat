@@ -12,9 +12,9 @@ func succed(index):
 	if index<12:
 		$maps1.get_node("map"+str(index)).succed()
 		$maps2.get_node("map"+str(index)).succed()
-		
-		$maps1.get_node("map"+str(index+1)).unlock()
-		$maps2.get_node("map"+str(index+1)).unlock()
+		if !GameStatus.maps[index]:
+			$maps1.get_node("map"+str(index+1)).unlock()
+			$maps2.get_node("map"+str(index+1)).unlock()
 	else:
 		$maps1.get_node("map"+str(index)).succed()
 		$maps2.get_node("map"+str(index)).succed()
@@ -39,7 +39,7 @@ func _ready():
 		if index==1 && map==false:
 			$maps1.get_node("map"+str(index)).unlock()
 			$maps2.get_node("map"+str(index)).unlock()
-		if map && index<12:
+		if map && index<8:
 			$maps1.get_node("map"+str(index)).succed()
 			$maps2.get_node("map"+str(index)).succed()
 			$maps1.get_node("map"+str(index+1)).unlock()
@@ -47,6 +47,7 @@ func _ready():
 		elif map:
 			$maps1.get_node("map"+str(index)).succed()
 			$maps2.get_node("map"+str(index)).succed()	
+			$outro.disabled=false
 		index+=1
 
 func focus(map):

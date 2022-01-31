@@ -9,6 +9,8 @@ onready var player = $Player
 
 var zoom = 1
 
+var visible_tut = false
+
 var start_position = Vector2.ZERO
 var start_rotation = 0
 
@@ -25,6 +27,8 @@ enum DIRC { up,down,left,right }
 var ray = {}
 
 func _ready():
+	if get_parent().get_parent().has_node("bgg"):
+		visible_tut = true
 #	if !left_side:
 #		$Player/butts/down.set_normal_texture(preload("res://assets/graphics/UI/gora.png"))  
 #		$Player/butts/up.set_normal_texture(preload("res://assets/graphics/UI/dol.png"))  
@@ -125,8 +129,13 @@ func _process(delta):
 
 func _input(event):
 	
+	
 	if Input.is_action_just_pressed("ui_accept") && get_parent().get_parent().has_node("bgg"):
 		get_node("../../bgg/BG").visible = false
+		visible_tut = false
+		
+	if visible_tut:
+		return
 	
 	if event.is_pressed() && event is InputEventMouseButton && event.button_index == BUTTON_WHEEL_DOWN:
 		zoom += 0.1

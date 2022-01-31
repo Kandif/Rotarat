@@ -86,6 +86,7 @@ margin_left = 41.0
 margin_top = 972.0
 margin_right = 371.0
 margin_bottom = 1069.0
+focus_mode = 0
 texture_normal = SubResource( 1 )
 expand = true
 __meta__ = {

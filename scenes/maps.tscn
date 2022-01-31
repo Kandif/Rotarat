@@ -51,6 +51,7 @@ flags = 4
 load_path = "res://.import/button1.png-c9d24591a5f31d937cecdcd60928258f.stex"
 
 [node name="maps" type="Node2D"]
+visible = false
 script = ExtResource( 2 )
 
 [node name="MapkaClean" type="Sprite" parent="."]
@@ -63,7 +64,7 @@ rotation = -2.42077
 scale = Vector2( 0.4, 0.4 )
 z_index = 2
 frames = SubResource( 7 )
-frame = 3
+frame = 5
 playing = true
 offset = Vector2( -100, 0 )
 flip_h = true
@@ -74,7 +75,7 @@ rotation = 2.0752
 scale = Vector2( 0.4, 0.4 )
 z_index = 2
 frames = SubResource( 7 )
-frame = 2
+frame = 4
 playing = true
 offset = Vector2( 80, 0 )
 
@@ -191,6 +192,7 @@ margin_left = 929.385
 margin_top = 887.643
 margin_right = 1040.38
 margin_bottom = 953.643
+focus_mode = 0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 5 )
 __meta__ = {
@@ -202,6 +204,7 @@ margin_left = 929.385
 margin_top = 103.64
 margin_right = 1040.38
 margin_bottom = 169.64
+focus_mode = 0
 disabled = true
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 5 )
@@ -215,6 +218,7 @@ margin_left = 45.0
 margin_top = 907.0
 margin_right = 513.0
 margin_bottom = 1044.0
+focus_mode = 0
 texture_normal = SubResource( 8 )
 __meta__ = {
 "_edit_group_": true,
